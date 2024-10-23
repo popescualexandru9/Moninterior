@@ -1,17 +1,17 @@
 require "application_system_test_case"
 
-class LandingsTest < ApplicationSystemTestCase
+class LandingTest < ApplicationSystemTestCase
   setup do
-    @landing = landings(:one)
+    @landing = landing(:one)
   end
 
   test "visiting the index" do
-    visit landings_url
-    assert_selector "h1", text: "Landings"
+    visit landing_url
+    assert_selector "h1", text: "Landing"
   end
 
   test "should create landing" do
-    visit landings_url
+    visit landing_url
     click_on "New landing"
 
     click_on "Create Landing"

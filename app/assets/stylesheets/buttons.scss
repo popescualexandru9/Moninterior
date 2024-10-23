@@ -1,0 +1,188 @@
+.caption button,
+#contact-form button {
+  font-family: "Roboto";
+  background: transparent;
+  display: inline-block;
+  border-radius: 0;
+  min-width: 190px;
+  margin: inherit;
+  width: auto;
+  transition: all 0.8s ease;
+  text-align: center;
+  padding: 10px 19px;
+  color: #fff;
+  border: transparent;
+  margin-top: 20px;
+  z-index: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.caption button span,
+#contact-form button span {
+  font-weight: 450;
+  font-size: 12px;
+  text-transform: uppercase;
+  opacity: 1;
+  letter-spacing: 1.5pt;
+}
+
+#contact-form button span {
+  color: #000000;
+}
+
+.caption button:after,
+#contact-form button:after {
+  content: "";
+  width: 101%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  -webkit-transform: scaleX(0);
+  -ms-transform: scaleX(0);
+  transform: scaleX(0);
+  z-index: -1;
+  -webkit-transform-origin: left;
+  -ms-transform-origin: left;
+  transform-origin: left;
+  transition: 0.8s;
+  transition-timing-function: ease;
+}
+
+.caption button:hover:after,
+#contact-form button:hover:after {
+  transform: scaleX(1);
+  -webkit-transform: scaleX(1);
+  -ms-transform: scaleX(1);
+}
+
+.caption button:after {
+  background-color: #fff;
+}
+
+#contact-form button:after {
+  background-color: #000000;
+}
+
+.caption button:hover {
+  color: #676767;
+  border: transparent;
+}
+
+#contact-form button:hover {
+  border: transparent;
+}
+#contact-form button:hover span {
+  color: #fff;
+  transition: 0.3s;
+}
+
+.caption button .bottom,
+.caption button .left,
+.caption button .right,
+.caption button .top {
+  position: absolute;
+  background-color: hsla(0, 0%, 100%, 0.5);
+}
+
+#contact-form button .bottom,
+#contact-form button .left,
+#contact-form button .right,
+#contact-form button .top {
+  position: absolute;
+  background-color: hsla(0, 0%, 0%, 0.5);
+}
+
+.caption button .left,
+#contact-form button .left {
+  left: 0;
+  bottom: 0;
+  height: 0%;
+  width: 1px;
+  transition: height 0.5s ease-in-out;
+  transition-delay: 0.5s;
+}
+
+.caption button .top,
+#contact-form button .top {
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  transition: width 0.9s ease-in-out;
+  transition-delay: 0.9s;
+}
+
+.caption button .right,
+#contact-form button .right {
+  top: 0;
+  right: 0;
+  height: 0%;
+  width: 1px;
+  transition: height 0.5s ease-in-out;
+  transition-delay: 1.7s;
+}
+
+.caption button .bottom,
+#contact-form button .bottom {
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 1px;
+  transition: width 0.9s ease-out;
+  transition-delay: 2.2s;
+}
+
+.caption button.in .left,
+.caption button.in .right,
+#contact-form button.in .left,
+#contact-form button.in .right {
+  height: 100%;
+}
+
+.caption button.in .bottom,
+.caption button.in .top,
+#contact-form button.in .bottom,
+#contact-form button.in .top {
+  width: 100%;
+}
+
+.caption button.in span,
+#contact-form button.in span {
+  opacity: 1;
+  filter: alpha(opacity=10000);
+  filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+.caption button span,
+#contact-form button span {
+  opacity: 0;
+  filter: alpha(opacity=0);
+  transition: opacity 1.5s ease-out;
+}
+
+#contact-form button {
+  border-radius: 0.2rem;
+}
+
+@media (max-width: 768px) {
+  .caption button {
+    font-size: 2rem;
+    line-height: 1.2em;
+    bottom: -4.5rem;
+    position: relative;
+    padding: 0px;
+    margin-top: 0px;
+  }
+}
+
+@media (max-width: 576px) {
+  .caption button {
+    font-size: 2rem;
+    line-height: 1.2em;
+    bottom: -4.5rem;
+    position: relative;
+    padding: 0px;
+  }
+}

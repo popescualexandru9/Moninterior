@@ -1,12 +1,12 @@
 require "test_helper"
 
-class LandingsControllerTest < ActionDispatch::IntegrationTest
+class LandingControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @landing = landings(:one)
+    @landing = landing(:one)
   end
 
   test "should get index" do
-    get landings_url
+    get landing_url
     assert_response :success
   end
 
@@ -17,7 +17,7 @@ class LandingsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create landing" do
     assert_difference("Landing.count") do
-      post landings_url, params: { landing: {  } }
+      post landing_url, params: { landing: {  } }
     end
 
     assert_redirected_to landing_url(Landing.last)
@@ -43,6 +43,6 @@ class LandingsControllerTest < ActionDispatch::IntegrationTest
       delete landing_url(@landing)
     end
 
-    assert_redirected_to landings_url
+    assert_redirected_to landing_url
   end
 end

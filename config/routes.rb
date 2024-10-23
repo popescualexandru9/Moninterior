@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  resources :landings
-  devise_for :admins
-  devise_for :projects
+  root "landing#index"
+
+  resources :landing
   resources :projects
+  devise_for :admins, skip: [:registrations]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -10,5 +11,10 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
-  root "landing#index"
+
+  authenticated :admin_user do
+    root to: "admin#index", as: :admin_root
+  end
+
+  get "admin" => "admin#index"
 end

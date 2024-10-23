@@ -75,3 +75,4 @@ gem 'pry-remote'
 gem 'pry-stack_explorer'
 
 gem "devise" , "~> 4.9"
+gem 'aws-sdk-s3'

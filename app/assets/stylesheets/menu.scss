@@ -1,0 +1,166 @@
+.navbar {
+  color: #fff;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  right: 0;
+  transition: all 0.5s ease-out;
+  background-color: transparent;
+  max-width: 100% !important;
+}
+
+#logo {
+  padding-left: 5%;
+  font-size: 30px;
+}
+
+.menu-container {
+  max-width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between buttons */
+  z-index: 100;
+  padding-right: 5%;
+}
+
+.menu-button.rectangle {
+  cursor: pointer;
+  width: 2.6em;
+  height: 16px;
+  border: 2.5px solid white; /* Removed text-decoration for consistent button styles */
+  text-align: center; /* Center the text within the rectangle button */
+  line-height: 14px; /* Ensures text aligns vertically within the button */
+  color: white; /* Set text color to white */
+}
+
+.menu-button.hamburger {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 2.6em;
+  height: 16px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  z-index: 99;
+  display: none;
+  overflow: auto;
+  width: 100%;
+  height: 100%;
+  background: #000000;
+  opacity: 0.9;
+}
+
+.nav-links {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: none;
+  text-align: center;
+}
+
+.nav-links li {
+  margin: 10px 0;
+}
+
+.nav-links a {
+  color: #828181;
+  text-decoration: none;
+  font-size: 32px;
+  font-weight: 100;
+}
+.nav-links a:hover {
+  color: #fff;
+}
+
+.menu-button.hamburger span {
+  bottom: 0;
+  transition: all 0.2s ease-out;
+  display: block;
+  width: 2.6em;
+  height: 2.4px;
+  font-size: 1em;
+  background-color: white;
+  position: relative;
+  z-index: 1000;
+}
+
+.menu-button.hamburger.btn-open span:nth-child(1) {
+  width: 1.4em;
+  transform: rotate(45deg) translate(7px, 2px);
+}
+
+.menu-button.hamburger.btn-open span:nth-child(2) {
+  transition: transform 1s ease-in-out;
+  opacity: 0;
+}
+
+.menu-button.hamburger.btn-open span:nth-child(3) {
+  bottom: 0;
+  width: 1.4em;
+  transform: rotate(-45deg) translate(8px, -2px);
+}
+
+.menu-button.rectangle:hover {
+  border-color: #828181;
+}
+
+.menu-button.hamburger:hover span {
+  background-color: #828181;
+}
+
+.overlay footer {
+  position: absolute;
+  bottom: 0%;
+  right: 0%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.overlay .footer-content {
+  position: fixed;
+  bottom: 30px;
+  right: 5%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+@media (max-width: 768px) {
+  #logo {
+    padding-left: 3.5%;
+    font-size: 25px;
+  }
+
+  .menu-container {
+    padding-right: 3.5%;
+  }
+
+  .navbar {
+    padding-top: 3rem !important;
+  }
+}
+
+@media (max-width: 576px) {
+  #logo {
+    padding-left: 1.5rem;
+    font-size: 22px;
+  }
+
+  .menu-container {
+    padding-right: 2rem;
+  }
+
+  .navbar {
+    padding-top: 2rem !important;
+  }
+}

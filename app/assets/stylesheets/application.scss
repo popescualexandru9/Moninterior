@@ -1,0 +1,129 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+@import "menu";
+@import "caption";
+@import "buttons";
+@import "project_details";
+@import "font-awesome";
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+.main-content {
+  flex: 1; /* Takes up the remaining space */
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  font-family: "Roboto";
+  overflow-y: scroll;
+}
+
+body::-webkit-scrollbar,
+body::-webkit-scrollbar-button {
+  display: none;
+}
+
+html,
+body {
+  -ms-overflow-style: none; /* Hide scrollbar for Internet Explorer and Edge */
+  scrollbar-width: none; /* Hide scrollbar for Firefox */
+}
+
+.lazy-load {
+  transition: opacity 0.3s ease-in-out;
+}
+
+.zoom-image.zoom-in {
+  transform: scale(1.1);
+}
+
+* {
+  outline: 0 !important;
+}
+
+.footer {
+  background-color: #000;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.social-icons {
+  margin-bottom: 10px;
+}
+
+.social-icons i {
+  margin: 0 8px;
+  font-size: 24px;
+  transition: color 0.3s;
+}
+
+.social-icons .fa-instagram:hover {
+  color: transparent;
+  background: radial-gradient(
+    circle at 30% 107%,
+    #fdf497 0%,
+    #fdf497 5%,
+    #fd5949 45%,
+    #d6249f 60%,
+    #285aeb 90%
+  );
+  background: -webkit-radial-gradient(
+    circle at 30% 107%,
+    #fdf497 0%,
+    #fdf497 5%,
+    #fd5949 45%,
+    #d6249f 60%,
+    #285aeb 90%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.social-icons .fa-linkedin:hover {
+  color: transparent;
+  background: radial-gradient(circle at center, #007bb5, #006097);
+  background: -webkit-radial-gradient(circle at center, #007bb5, #006097);
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.footer-text {
+  font-size: 14px;
+  color: #fff;
+}
+
+.footer-text a {
+  color: #fff;
+  margin: 0 5px;
+  text-decoration: none;
+}
+
+.footer-text a:hover {
+  text-decoration: underline;
+}

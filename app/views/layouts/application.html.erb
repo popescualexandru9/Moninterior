@@ -2,18 +2,79 @@
 <html>
   <head>
     <title>Moninterior</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
-
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <main class="container mx-auto mt-28 px-5 flex">
-      <%= yield %>
-    </main>
+    <div class=main-content>
+      <div class="landing-page">
+        <%= yield %>
+      </div>
+
+      <nav class="container pt-14 flex justify-between items-center navbar">
+        <div id="logo" class="flex items-center"">
+          <a href="#" class="text-white font-bold">Moninterior</a>
+        </div>
+
+        <div class="menu-container">
+          <%= link_to "", projects_path, :class=> "menu-button rectangle" %>
+            <div class="menu-button hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
+        <div class="overlay">
+            <ul class="nav-links">
+              <li><a href="/projects#index">Portfolio</a></li>
+              <li><a href="/landing#about">About</a></li>
+              <li><a href="/landing#contact-form">Contact</a></li>
+            </ul>
+
+            <footer>
+              <div class="footer-content flex justify-between items-center">
+                <div class="social-icons">
+                  <a href="https://www.instagram.com/monii_ilinca/" target="_blank" aria-label="Instagram">
+                      <i class="fab fa-instagram"></i>
+                  </a>
+                  <a href="https://www.linkedin.com/in/monica-ilinca-3602b1232/" target="_blank" aria-label="LinkedIn">
+                      <i class="fab fa-linkedin"></i>
+                  </a>
+                </div>
+              </div>
+            </footer>
+        </div>
+      </nav>
+        
+       
+    </div>
+
+    <footer class="footer">
+      <div class="footer-content">
+          <div class="social-icons">
+              <a href="https://www.instagram.com/monii_ilinca/" target="_blank" aria-label="Instagram">
+                  <i class="fab fa-instagram"></i>
+              </a>
+              <a href="https://www.linkedin.com/in/monica-ilinca-3602b1232/" target="_blank" aria-label="LinkedIn">
+                  <i class="fab fa-linkedin"></i>
+              </a>
+          </div>
+
+          <div class="footer-text">
+              <p>&copy; 2024 by Alex Popescu | 
+                  <a href="#contact">Contact</a>
+              </p>
+          </div>
+      </div>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   </body>
 </html>

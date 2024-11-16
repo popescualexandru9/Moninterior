@@ -1,0 +1,47 @@
+.main-carousel {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.carousel-cell {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  position: absolute;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.flickity-viewport {
+  width: 100%;
+}
+
+.flickity-button {
+  background: transparent;
+}
+
+.flickity-button:hover {
+  background: transparent;
+}
+
+.flickity-button:focus {
+  box-shadow: none;
+}
+
+.flickity-prev-next-button {
+  width: 60px;
+  height: 100vh;
+  border-radius: 0%;
+}
+
+.flickity-prev-next-button svg:hover path {
+  fill: white;
+}
+
+.flickity-button-icon {
+  fill: #8c8c8c;
+  height: 100vh;
+}

@@ -1,5 +1,9 @@
 import ScrollMagic from "scrollmagic";
 import AOS from "aos";
+import Flickity from 'flickity';
+window.Flickity = Flickity
+
+import "./flickity_init";
 
 $(window).on('load', function() {
     $('html, body').animate({scrollTop: 0}, 'medium');
@@ -7,7 +11,8 @@ $(window).on('load', function() {
 
 $(document).ready(function () {
     AOS.init({})
-
+    
+    // Menu button display effect
     $(".menu-button.hamburger").click(function () {
         $(".overlay").fadeToggle(450);
         $(".nav-links").animate({width:'toggle'}, 450);
@@ -20,6 +25,8 @@ $(document).ready(function () {
         $(".menu-button.hamburger").removeClass('btn-open').addClass('btn-close');
     });
     
+
+    // Button display effect
     const loadpage_button = $(".loadpage");
     loadpage_button.css("visibility", "visible").addClass("in");
     $("#contact-form button").css("visibility", "visible").addClass("in");
@@ -31,7 +38,8 @@ $(document).ready(function () {
     });
 
 
-     // Initialize the ScrollMagic controller
+    // ScrollMagic color change functionality for nvaigation bar
+    // Initialize the ScrollMagic controller
     var controller = new ScrollMagic.Controller();
 
     // Select all sections that have data-header attributes

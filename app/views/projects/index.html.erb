@@ -1,12 +1,12 @@
-<div class="w-full">
-
-  <div class="caption" data-header="navbar_scroll_white">
-    <div class="caption-background" data-aos="zoom-in-out" data-aos-duration="1000" style="background-image: url('<%= @project_landing_cover %>');"></div>
+<div class="main-carousel">
+  <% @projects.each do |project| %>
+  <div class="caption carousel-cell" data-header="navbar_scroll_white">
+    <div class="caption-background" style="background-image: url('<%= @project_landing_cover %>');"></div>
     <div class="caption-container">
       <div class="caption-text">
-        <p data-aos="fade-right" data-aos-delay="1200" data-aos-duration="1200" data-aos-offset="50" class="caption-title text-4xl">Experimental Music Center</p>
+        <p data-aos="fade-right" data-aos-delay="1200" data-aos-duration="1200" data-aos-offset="50" class="caption-title text-4xl"> <%= project.name %></p>
         <section data-aos="fade-right" data-aos-delay="1500" data-aos-duration="1200" class="caption-p">
-          <p>Creating an interactive musical center in the Kretzulescu Building, located on Calea Victoriei.</p>
+          <p><%= project.brief %></p>
         </section>
       </div>
 
@@ -25,22 +25,5 @@
       </div>
     </div>
   </div>
-
- <%
-=begin%>
- <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Projects</h1>
-    <%= link_to "New project", new_project_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
-  </div>  
-<%
-=end%>
-
-  <div class="project-carousel">
-    <% @projects.each do |project| %>
-      <div class="project-slide">
-        <%= link_to image_tag(project.image_url), project_path(project) %>
-        <h2><%= project.title %></h2>
-      </div>
-    <% end %>
-  </div>
+  <% end %>
 </div>

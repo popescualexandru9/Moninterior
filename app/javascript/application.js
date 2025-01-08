@@ -1,9 +1,13 @@
 import ScrollMagic from "scrollmagic";
 import AOS from "aos";
 import Flickity from 'flickity';
+import Alpine from 'alpinejs';
+
+window.Alpine = Alpine
 window.Flickity = Flickity
 
 import "./flickity_init";
+import "./alpine_init";
 
 $(window).on('load', function() {
     $('html, body').animate({scrollTop: 0}, 'medium');
@@ -25,6 +29,23 @@ $(document).ready(function () {
         $(".menu-button.hamburger").removeClass('btn-open').addClass('btn-close');
     });
     
+    const blueprint_buttons = document.querySelectorAll(".blueprint_buttons button");
+    const slideBackground = document.querySelector(".slide-background");
+
+    blueprint_buttons.forEach((button, index) => {
+        button.addEventListener("click", () => {
+        // Move the sliding background
+        slideBackground.style.width = `${button.offsetWidth}px`;
+        slideBackground.style.transform = `translateX(${index * 100}%)`;
+
+        // Update button colors
+        blueprint_buttons.forEach((btn) => (btn.style.color = "#000")); // Reset all
+        setTimeout(() => {
+            button.style.color = "#fff"; // Active button
+        }, 200);
+        });
+
+    });
 
     // Button display effect
     const loadpage_button = $(".loadpage");

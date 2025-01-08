@@ -49,7 +49,7 @@ gem "bootsnap", require: false
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "debug", platforms: %i[ mri windows ]
+  gem "debug"
 end
 
 group :development do
@@ -76,3 +76,4 @@ gem 'pry-stack_explorer'
 
 gem "devise" , "~> 4.9"
 gem 'aws-sdk-s3'
+gem 'htmlbeautifier'

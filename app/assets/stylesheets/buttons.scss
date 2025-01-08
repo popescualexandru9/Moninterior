@@ -186,3 +186,37 @@
     padding: 0px;
   }
 }
+
+.blueprint_buttons {
+  position: relative;
+  display: inline-flex !important;
+  flex-wrap: nowrap;
+  width: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Buttons */
+.blueprint_buttons button {
+  flex: 1;
+  text-align: center;
+  font-size: 14px;
+  color: #000;
+  border: 1px solid #a8a8a8;
+  border-radius: 3px;
+  background: transparent;
+  width: 110px;
+  cursor: pointer;
+  padding: 8px 12px 8px 12px;
+}
+
+.slide-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: #383838;
+  transition: transform 0.5s ease;
+  border-radius: 5px;
+  z-index: -1;
+}

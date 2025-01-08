@@ -11,3 +11,6 @@ pin "fizzy-ui-utils" # @3.0.0
 pin "get-size" # @3.0.0
 pin "imagesloaded" # @5.0.0
 pin "unidragger" # @3.0.1
+pin "lightbox2" # @2.11.5
+pin "jquery" # @3.7.1
+pin "alpinejs" # @3.14.3

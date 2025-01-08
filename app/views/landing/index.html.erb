@@ -30,33 +30,35 @@
   <main>
     <div id="about" data-header="navbar_scroll_black">
       <div class="grid grid-cols-2">
-        <div class="image p-4">
+        <div class="image image-positioning p-4">
           <%= image_tag "Mona_about.jpeg", alt: "About Mona" %>
         </div>
 
         <div class="text_area p-4">
-            <h2 class=" mb-4">About me</h2>
-            <p class="mb-4">Enthusiastic and passionate about interior architecture, I am continuously seeking to acquire new skills and connect with professionals from whom I can learn.</p>
-            <p class="mb-4"> My ambition and open-minded approach drive me to excel in dynamic, team-oriented environments, especially under time constraints and pressure. I thrive on collaboration and am always socially active, making me an excellent candidate for positions that demand creativity, teamwork, and dedication.</p>
+          <h2 class=" mb-4">About me</h2>
+          <p class="mb-4">Enthusiastic and passionate about interior architecture, I am continuously seeking to acquire new skills and connect with professionals from whom I can learn.</p>
+          <p class="mb-4"> My ambition and open-minded approach drive me to excel in dynamic, team-oriented environments, especially under time constraints and pressure. I thrive on collaboration and am always socially active, making me an excellent candidate for positions that demand creativity, teamwork, and dedication.</p>
         </div>
       </div>
     </div>
-    <div class="image colaj mx-auto" data-header="navbar_scroll_white">
-        <%= image_tag "Colaj_divider.png", alt: "About Mona" %>
+    <div class="image image-positioning colaj mx-auto" data-header="navbar_scroll_white">
+      <%= image_tag "Colaj_divider.png", alt: "About Mona" %>
     </div>
 
     <div id="contact-form" class="grid lg:grid-cols-4" data-header="navbar_scroll_black">
       <div></div>
       <div class="p-10 col-span-2">
         <h2 class="mb-10 mt-0 text-4xl font-light leading-tight text-primary grid grid-cols-1 place-items-center">Reach out</h2>
-        <form action="" method="post"> 
+        <form action="" method="post">
 
           <span class="input_wrapper"> <input type="text" name="your-name" value="" class="rounded-md" aria-required="true" aria-invalid="false" placeholder="Full Name*"> </span>
           <span class="input_wrapper"> <input type="tel" name="phone" value=""  class="rounded-md" aria-required="true" aria-invalid="false" placeholder="Phone Number*">   </span>
           <span class="input_wrapper"> <input type="email" name="email" value=""  class="rounded-md" aria-required="true" aria-invalid="false" placeholder="Email*">        </span>
-          <span class="input_wrapper"> <textarea name="message" class="rounded-md" cols="40" rows="4" aria-invalid="false" placeholder="Message"></textarea> </span>
-
           <span class="input_wrapper"> 
+            <textarea name="message" class="rounded-md" cols="40" rows="4" aria-invalid="false" placeholder="Message"></textarea>
+ </span>
+
+          <span class="input_wrapper">
             <div class="checkbox">
               <input type="checkbox" id="privacy-policy" class="rounded-sm" name="privacy-policy" required>
               <label for="privacy-policy" class="font-medium ml-2"> I understand that my data will be stored in accordance with the privacy policy</label>

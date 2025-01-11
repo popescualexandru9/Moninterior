@@ -4,6 +4,7 @@ function initializeFlickity() {
   if (elem) {
     var flkty = new Flickity(elem, {
       cellAlign: 'center',
+      accessibility: false,
       pageDots: false,
       prevNextButtons: true,
       draggable: true,
@@ -15,16 +16,7 @@ function initializeFlickity() {
       initialIndex: localStorage.getItem('currentSlide') || 0
     });
 
-    // Enable keyboard navigation
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'ArrowLeft') {
-        flkty.previous();
-      } else if (e.key === 'ArrowRight') {
-        flkty.next();
-      }
-    });
-
-      // Save current slide index to localStorage on change event
+    // Save current slide index to localStorage on change event
     flkty.on('change', function(index) {
       localStorage.setItem('currentSlide', index);
     });

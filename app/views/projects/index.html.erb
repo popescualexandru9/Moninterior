@@ -73,7 +73,7 @@
             </template>
             <!-- Modal -->
             <div x-show="showModal" x-transition @click="closeModal()"
-                class="fixed inset-0 z-50 flex items-center justify-center" style="background-color: rgba(0, 0, 0, 0.75);">
+                class="fixed inset-0 z-50 flex items-center justify-center" style="background-color: rgba(0, 0, 0, 0.5);">
               <div class="relative max-w-7xl max-h-[90vh] overflow-hidden" @click.stop>  <!-- This prevents the click from bubbling up -->
                 <img :src="currentImage" :alt="images[currentIndex].name" class="object-contain max-h-[85vh]">
               </div>

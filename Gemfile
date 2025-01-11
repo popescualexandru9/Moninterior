@@ -77,3 +77,5 @@ gem 'pry-stack_explorer'
 gem "devise" , "~> 4.9"
 gem 'aws-sdk-s3'
 gem 'htmlbeautifier'
+gem 'active_storage_validations'
+gem 'dotenv-rails', groups: [:development, :test]

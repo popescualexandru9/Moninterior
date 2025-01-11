@@ -1,6 +1,7 @@
 class LandingController < ApplicationController
 
   def index
-    @project_landing_cover = 'https://moninterior.s3.us-east-1.amazonaws.com/landing.jpeg'
+    project_image = Project.find(1).project_images.where(tag: 'cover').first
+    @project_landing_cover = rails_blob_path(project_image.image, only_path: true)
   end
 end

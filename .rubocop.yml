@@ -1,0 +1,42 @@
+require:
+  - rubocop-rails
+  - rubocop-capybara
+
+AllCops:
+  SuggestExtensions: false
+  NewCops: enable
+  Exclude:
+    - "db/schema.rb"
+    - "bin/**/*"
+    - "vendor/**/*"
+    - "node_modules/**/*"
+
+Metrics/BlockLength:
+  Exclude:
+    - "config/environments/*.rb"
+    - "config/routes.rb"
+    - "config/initializers/*.rb"
+
+Layout/LineLength:
+  Max: 120
+  Exclude:
+    - "config/initializers/devise.rb"
+
+Metrics/MethodLength:
+  Max: 15
+  Exclude:
+    - "db/migrate/*"
+
+Metrics/AbcSize:
+  Max: 30
+  Exclude:
+    - "db/migrate/*"
+
+Metrics/CyclomaticComplexity:
+  Max: 10
+
+Metrics/PerceivedComplexity:
+  Max: 10
+
+Style/FrozenStringLiteralComment:
+  Enabled: false

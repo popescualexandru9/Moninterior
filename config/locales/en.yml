@@ -29,3 +29,18 @@
 
 en:
   hello: "Hello world"
+  errors:
+    messages:
+      file_too_large: "is too large (must be less than 5MB)"
+  project_images:
+    create:
+      success: "Image was successfully added."
+    destroy:
+      deleted: "Image was successfully removed."
+  projects:
+    create:
+      success: "Project was successfully created."
+    update:
+      success: "Project was successfully updated."
+    destroy:
+      success: "Project was successfully deleted."

@@ -23,7 +23,7 @@
   <% end %>
 </div>
 
-<script type="application/json" id="gallery-images">
+<script type="text/javascript" id="gallery-images">
   <%= raw @images.to_json %>
 </script>
 
@@ -34,7 +34,7 @@
         <h2 class=" mb-4">The Concept</h2>
         <p class="mb-4">The client, a tech entrepreneur in their mid-30s, seeks to transform their spare bedroom into a functional and inspiring home office. The space should reflect a modern minimalist aesthetic while prioritizing productivity and comfort.</p>
         <p class="mb-4"> The final design should create a harmonious balance between functionality and aesthetics, resulting in a space that inspires productivity and creativity while maintaining a sense of calm and order. The final design should create a harmonious balance between functionality and aesthetics, resulting in a space that inspires productivity and creativity while maintaining a sense of calm and order.</p>
-        <p class="mb-4"> The final design should create a harmoni ous balance between functionality and aesthetics, resulting in a space that inspires productivity and creativity while maintaining a sense of calm and order.</p>
+        <p class="mb-4"> The final design should create a harmonious balance between functionality and aesthetics, resulting in a space that inspires productivity and creativity while maintaining a sense of calm and order.</p>
       </div>
 
       <div class="image image-positioning p-4">
@@ -45,14 +45,14 @@
     <!-- The gallery section -->
     <div class="grid grid-cols-3">
       <div class="col-span-2 pt-24">
-        <div x-data="imageGallery" 
+        <div x-data="imageGallery"
           class="rounded-lg p-4 max-w-4xl mx-auto"
-          @keydown.escape.window="closeModal()"
+          x-on:keydown.escape.window="closeModal()"
           class="relative">
           <div class="mb-4 py-2 overflow-x-auto">
             <div class="blueprint_buttons">
               <template x-for="(image, index) in images" :key="index">
-                <button @click="setCurrentImage(index)" x-text="image.name"></button>
+                <button x-on:click="setCurrentImage(index)" x-text="image.name"></button>
               </template>
               <div class="slide-background"></div>
             </div>
@@ -60,10 +60,10 @@
 
           <div class="relative w-full h-[575px] rounded-lg overflow-hidden ">
             <template x-if="images.length > 0">
-              <div @click="showModal = true" class="block w-full h-full cursor-pointer">
-                <img :src="currentImage" 
-                      :alt="images[currentIndex].name" 
-                      class="object-none w-full h-full hover:opacity-90 transition-opacity">
+              <div x-on:click="showModal = true" class="block w-full h-full cursor-pointer">
+                <img :src="currentImage"
+                    :alt="images[currentIndex].name"
+                    class="object-none w-full h-full hover:opacity-90 transition-opacity">
               </div>
             </template>
             <template x-if="images.length === 0">
@@ -72,9 +72,9 @@
               </div>
             </template>
             <!-- Modal -->
-            <div x-show="showModal" x-transition @click="closeModal()"
+            <div x-show="showModal" x-transition x-on:click="closeModal()"
                 class="fixed inset-0 z-50 flex items-center justify-center" style="background-color: rgba(0, 0, 0, 0.5);">
-              <div class="relative max-w-7xl max-h-[90vh] overflow-hidden" @click.stop>  <!-- This prevents the click from bubbling up -->
+              <div class="relative max-w-7xl max-h-[90vh] overflow-hidden" x-on:click.stop>
                 <img :src="currentImage" :alt="images[currentIndex].name" class="object-contain max-h-[85vh]">
               </div>
             </div>
@@ -91,7 +91,7 @@
 
     <div class="grid grid-cols-2">
       <div class="text_area p-4">
-        <h2 class=" mb-4">The Brief</h2>
+        <h2 class="mb-4">The Brief</h2>
         <p class="mb-4">The client, a tech entrepreneur in their mid-30s, seeks to transform their spare bedroom into a functional and inspiring home office. The space should reflect a modern minimalist aesthetic while prioritizing productivity and comfort.</p>
         <p class="mb-4"> The final design should create a harmonious balance between functionality and aesthetics, resulting in a space that inspires productivity and creativity while maintaining a sense of calm and order. The final design should create a harmonious balance between functionality and aesthetics, resulting in a space that inspires productivity and creativity while maintaining a sense of calm and order.</p>
         <p class="mb-4"> The final design should create a harmonious balance between functionality and aesthetics, resulting in a space that inspires productivity and creativity while maintaining a sense of calm and order.</p>

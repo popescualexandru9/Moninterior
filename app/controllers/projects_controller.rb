@@ -1,11 +1,14 @@
+# frozen_string_literal: true
+
+# Projects controller
 class ProjectsController < ApplicationController
-  before_action :set_project, only: %i[ show edit update destroy ]
+  before_action :set_project, only: %i[show edit update destroy]
 
   # GET /projects or /projects.json
   def index
     @projects = Project.all
     @project_landing_cover = 'https://moninterior.s3.us-east-1.amazonaws.com/landing.jpeg'
-    @images = Dir.glob(Rails.root.join('app', 'assets', 'images', 'blueprint_plan', '*')).map do |file|
+    @images = Rails.root.glob('app/assets/images/blueprint_plan/*').map do |file|
       {
         name: File.basename(file, '.png'),
         src: ActionController::Base.helpers.asset_path("blueprint_plan/#{File.basename(file)}")
@@ -24,8 +27,7 @@ class ProjectsController < ApplicationController
   end
 
   # GET /projects/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /projects or /projects.json
   def create
@@ -66,13 +68,14 @@ class ProjectsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_project
-      @project = Project.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def project_params
-      params.require(:project).permit(:name, :brief)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_project
+    @project = Project.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def project_params
+    params.require(:project).permit(:name, :brief)
+  end
 end

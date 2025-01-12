@@ -1,100 +1,127 @@
 import ScrollMagic from "scrollmagic";
 import AOS from "aos";
-import Flickity from 'flickity';
-import Alpine from 'alpinejs';
+import Flickity from "flickity";
+import Alpine from "alpinejs";
 
-window.Alpine = Alpine
-window.Flickity = Flickity
+window.Alpine = Alpine;
+window.Flickity = Flickity;
 
 import "./flickity_init";
 import "./alpine_init";
 
-$(window).on('load', function() {
-    $('html, body').animate({scrollTop: 0}, 'medium');
-});
+// Configuration constants
+const ANIMATION_TIMING = {
+  SCROLL: 1200,
+  MENU_TOGGLE: 450,
+  MENU_FADE: 650,
+  BUTTON_COLOR: 200,
+};
 
+const COLORS = {
+  WHITE: "white",
+  BLACK: "black",
+};
+
+// Utility functions
+const scrollToElement = (element, duration = ANIMATION_TIMING.SCROLL) => {
+  if (!element) return;
+
+  $("html, body").animate(
+    {
+      scrollTop: $(element).offset().top,
+    },
+    duration
+  );
+};
+
+const updateNavbarColors = (color) => {
+  requestAnimationFrame(() => {
+    $(".menu-container span").css("background-color", color);
+    $(".menu-container .rectangle").css("border-color", color);
+    $("#logo").css("color", color);
+  });
+};
+
+// Menu handlers
+const initMenuHandlers = () => {
+  $(".menu-button.hamburger").click(function () {
+    $(".overlay").fadeToggle(ANIMATION_TIMING.MENU_TOGGLE);
+    $(".nav-links").animate({ width: "toggle" }, ANIMATION_TIMING.MENU_TOGGLE);
+    $(this).toggleClass("btn-open btn-close");
+  });
+
+  $(".nav-links a").click(function () {
+    $(".overlay").fadeOut(ANIMATION_TIMING.MENU_FADE);
+    $(".nav-links").animate({ width: "toggle" }, ANIMATION_TIMING.MENU_TOGGLE);
+    $(".menu-button.hamburger").removeClass("btn-open").addClass("btn-close");
+  });
+};
+
+// Blueprint buttons functionality
+const initBlueprintButtons = () => {
+  const buttons = document.querySelectorAll(".blueprint_buttons button");
+  const slideBackground = document.querySelector(".slide-background");
+
+  if (!buttons.length || !slideBackground) return;
+
+  buttons.forEach((button, index) => {
+    button.addEventListener("click", () => {
+      slideBackground.style.width = `${button.offsetWidth}px`;
+      slideBackground.style.transform = `translateX(${index * 100}%)`;
+
+      buttons.forEach((btn) => (btn.style.color = COLORS.BLACK));
+      setTimeout(() => {
+        button.style.color = COLORS.WHITE;
+      }, ANIMATION_TIMING.BUTTON_COLOR);
+    });
+  });
+};
+
+// ScrollMagic initialization
+const initScrollMagic = () => {
+  const controller = new ScrollMagic.Controller();
+
+  $("div[data-header]").each(function () {
+    const section = $(this);
+
+    new ScrollMagic.Scene({
+      triggerElement: this,
+      triggerHook: 0,
+      offset: -$(".navbar").outerHeight(),
+      duration: section.height(),
+    })
+      .on("enter", function () {
+        const headerColor = section.attr("data-header");
+        const color =
+          headerColor === "navbar_scroll_white" ? COLORS.WHITE : COLORS.BLACK;
+        updateNavbarColors(color);
+      })
+      .addTo(controller);
+  });
+};
+
+// Button visibility handlers
+const initButtonVisibility = () => {
+  const loadpageButton = $(".loadpage");
+  loadpageButton.css("visibility", "visible").addClass("in");
+  $("#contact-form button").css("visibility", "visible").addClass("in");
+
+  loadpageButton.click(() => scrollToElement("main"));
+};
+
+// Initialize everything when document is ready
 $(document).ready(function () {
-    AOS.init({})
-    
-    // Menu button display effect
-    $(".menu-button.hamburger").click(function () {
-        $(".overlay").fadeToggle(450);
-        $(".nav-links").animate({width:'toggle'}, 450);
-        $(this).toggleClass('btn-open').toggleClass('btn-close');
-    });
+  AOS.init({});
+  initMenuHandlers();
+  initButtonVisibility();
+  initScrollMagic();
+  initBlueprintButtons();
 
-    $(".nav-links a").click(function () {
-        $(".overlay").fadeOut(650);
-        $(".nav-links").animate({ width: 'toggle' }, 450);
-        $(".menu-button.hamburger").removeClass('btn-open').addClass('btn-close');
-    });
-    
-    const blueprint_buttons = document.querySelectorAll(".blueprint_buttons button");
-    const slideBackground = document.querySelector(".slide-background");
-
-    blueprint_buttons.forEach((button, index) => {
-        button.addEventListener("click", () => {
-        // Move the sliding background
-        slideBackground.style.width = `${button.offsetWidth}px`;
-        slideBackground.style.transform = `translateX(${index * 100}%)`;
-
-        // Update button colors
-        blueprint_buttons.forEach((btn) => (btn.style.color = "#000")); // Reset all
-        setTimeout(() => {
-            button.style.color = "#fff"; // Active button
-        }, 200);
-        });
-
-    });
-
-    // Button display effect
-    const loadpage_button = $(".loadpage");
-    loadpage_button.css("visibility", "visible").addClass("in");
-    $("#contact-form button").css("visibility", "visible").addClass("in");
-
-    loadpage_button.click(function() {
-        $('html, body').animate({
-        scrollTop: $('main').offset().top
-        }, 1200);
-    });
-
-
-    // ScrollMagic color change functionality for nvaigation bar
-    // Initialize the ScrollMagic controller
-    var controller = new ScrollMagic.Controller();
-
-    // Select all sections that have data-header attributes
-    $("div[data-header]").each(function() {
-        var section = $(this);
-        
-        new ScrollMagic.Scene({
-            triggerElement: this,
-            triggerHook: 0, // This means the trigger will be at the top of the viewport
-            offset: -$(".navbar").outerHeight(),   
-            duration: section.height()
-        })
-        .on("enter", function () {
-            // Get the data-header attribute value
-            var headerColor = section.attr("data-header");
-
-            // Switch classes on .navbar based on headerColor
-            switch (headerColor) {
-            case "navbar_scroll_white":
-                requestAnimationFrame(() => {
-                    $(".menu-container span").css("background-color", "white");
-                    $(".menu-container .rectangle").css("border-color", "white");
-                    $("#logo").css("color", "white");
-                });
-                break;
-            case "navbar_scroll_black":
-                requestAnimationFrame(() => {
-                    $(".menu-container span").css("background-color", "black");
-                    $(".menu-container .rectangle").css("border-color", "black");
-                    $("#logo").css("color", "black");
-                });
-                break;
-           }
-        })
-        .addTo(controller);
-    });
+  // Handle URL hash scrolling
+  const hash = window.location.hash;
+  if (hash && $(hash).length) {
+    scrollToElement(hash);
+  } else {
+    $("html, body").animate({ scrollTop: 0 }, "medium");
+  }
 });

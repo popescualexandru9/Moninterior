@@ -14,7 +14,7 @@ module Admin
                  .exists?(['created_at > ?', 1.minute.ago])
 
         return redirect_to admin_project_path(@project),
-                           notice: t('.already_uploaded')
+                           alert: t('.already_uploaded')
       end
 
       @project_image = @project.project_images.build(project_image_params)
@@ -23,7 +23,7 @@ module Admin
         redirect_to admin_project_path(@project), notice: t('.success')
       else
         @project_images = @project.project_images
-        render :index, status: :unprocessable_entity
+        render 'admin/projects/show', status: :unprocessable_entity
       end
     end
 

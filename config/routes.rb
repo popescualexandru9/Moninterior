@@ -14,5 +14,5 @@ Rails.application.routes.draw do
   end
 
   # Public routes
-  resources :projects, only: %i[index]
+  resources :projects, only: %i[index show]
 end

@@ -51,3 +51,10 @@ en:
 
   authentication:
     login_required: "Please sign in to access this area"
+
+  errors:
+    messages:
+      file_too_large: "File size must be less than 5MB"
+      name_not_unique: "must be unique within the project"
+      invalid_tag: "must be one of: cover, blueprint, details, or other"
+      name_too_long: "must be 20 characters or less"

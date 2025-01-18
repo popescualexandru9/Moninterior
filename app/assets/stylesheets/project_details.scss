@@ -72,6 +72,15 @@ textarea {
   margin: 10px 0;
 }
 
+.project_contents {
+  transition: opacity 0.5s ease;
+  opacity: 1;
+}
+
+.project_contents.fade-out {
+  opacity: 0;
+}
+
 @media (max-width: 1800px) {
   .colaj {
     transform: scaleX(1);

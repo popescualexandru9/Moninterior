@@ -122,13 +122,38 @@ const initAlertHandlers = () => {
   }
 };
 
+// Render project content
+const renderProjectContent = () => {
+  document.querySelectorAll(".loadpage").forEach((button) => {
+    button.addEventListener("click", function () {
+      const projectId = this.getAttribute("data-project-id");
+      fetch(`/projects/${projectId}`)
+        .then((response) => response.text())
+        .then((html) => {
+          document.getElementById("project_contents").innerHTML = html;
+        })
+        .then(() => initBlueprintButtons())
+        .then(() => initScrollMagic());
+    });
+  });
+};
+
+// Vault icon redirect
+function initVaultIconRedirect(e) {
+  if (e.button === 1) {
+    e.preventDefault();
+    window.location.replace("/admin/projects");
+  }
+}
+window.initVaultIconRedirect = initVaultIconRedirect;
+
 // Initialize everything when document is ready
 $(document).ready(function () {
   AOS.init({});
+  renderProjectContent();
   initMenuHandlers();
   initButtonVisibility();
   initScrollMagic();
-  initBlueprintButtons();
   initAlertHandlers();
 
   // Handle URL hash scrolling

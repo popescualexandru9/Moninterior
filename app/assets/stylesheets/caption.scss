@@ -49,7 +49,21 @@
   align-items: flex-start;
   justify-content: flex-start;
   z-index: 1;
-  background: linear-gradient(180deg, transparent 0, rgba(0, 0, 0, 0.65));
+}
+
+.caption-container::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.75));
+  opacity: 0; /* Start with no gradient */
+  animation: fadeInGradient 1.5s ease forwards; /* Transition over half a second */
+}
+
+@keyframes fadeInGradient {
+  to {
+    opacity: 1;
+  }
 }
 
 .caption-text {
@@ -57,6 +71,7 @@
   height: 100%;
   width: 100%;
   cursor: default;
+  z-index: 1;
 }
 
 .caption-title {
@@ -85,7 +100,7 @@
 
 @media (max-width: 992px) {
   .caption-container {
-    padding: 1.75vh 2.5% 2.5rem 4.5%;
+    padding: 3vh 2.5% 2.5rem 4.5%;
   }
 
   .caption-title {
@@ -112,7 +127,7 @@
 
 @media (max-width: 576px) {
   .caption-container {
-    padding: 1vh 2% 4rem 4%;
+    padding: 3vh 2% 4rem 4%;
   }
 
   .caption-title {

@@ -16,6 +16,7 @@
   z-index: 1;
   position: relative;
   overflow: hidden;
+  line-height: 2.5em;
 }
 
 .caption button span,
@@ -169,21 +170,22 @@
 @media (max-width: 768px) {
   .caption button {
     font-size: 2rem;
-    line-height: 1.2em;
+    line-height: 2em;
     bottom: -4.5rem;
     position: relative;
     padding: 0px;
-    margin-top: 0px;
+    margin-top: 0.5em;
   }
 }
 
 @media (max-width: 576px) {
   .caption button {
     font-size: 2rem;
-    line-height: 1.2em;
+    line-height: 2em;
     bottom: -4.5rem;
     position: relative;
     padding: 0px;
+    margin-top: 0.5em;
   }
 }
 

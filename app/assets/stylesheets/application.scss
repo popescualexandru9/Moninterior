@@ -85,6 +85,9 @@ body {
   margin: 0 8px;
   font-size: 24px;
   transition: color 0.3s;
+  overflow: visible !important;
+  padding: 1px;
+  box-sizing: content-box;
 }
 
 .social-icons .fa-instagram:hover {
@@ -113,6 +116,26 @@ body {
   color: transparent;
   background: radial-gradient(circle at center, #007bb5, #006097);
   background: -webkit-radial-gradient(circle at center, #007bb5, #006097);
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.social-icons .fa-user-lock:hover {
+  color: transparent;
+  background: radial-gradient(
+    #d4b675 0%,
+    #b89f65 25%,
+    #8b7b4b 50%,
+    #455a15 75%,
+    #455a15 100%
+  );
+  background: -webkit-radial-gradient(
+    #d4b675 0%,
+    #b89f65 25%,
+    #8b7b4b 50%,
+    #455a15 75%,
+    #455a15 100%
+  );
   background-clip: text;
   -webkit-background-clip: text;
 }

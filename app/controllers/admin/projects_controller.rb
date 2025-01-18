@@ -3,7 +3,9 @@
 module Admin
   # Controller for managing projects
   class ProjectsController < ApplicationController
-    before_action :authenticate_admin!
+    before_action :require_admin
+    before_action :check_session_timeout
+
     before_action :set_project, only: %i[show edit update destroy]
     rescue_from ActiveRecord::RecordNotFound, with: :handle_not_found
 

@@ -52,7 +52,8 @@ en:
         success: "Image was successfully deleted"
 
   authentication:
-    login_required: "Please sign in to access this area"
+    login_required: "Please sign in to access this area."
+    session_expired: "Session has expired. Please log in again."
 
   errors:
     messages:

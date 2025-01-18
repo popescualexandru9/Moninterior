@@ -2,17 +2,25 @@
 
 # Controller for handling admin authentication
 class ApplicationController < ActionController::Base
-  helper_method :admin_signed_in?
+  protect_from_forgery with: :exception
+  rescue_from ActionController::InvalidAuthenticityToken do
+    redirect_to root_path, alert: t('authentication.session_expired')
+  end
 
   private
 
-  def authenticate_admin!
-    return if admin_signed_in?
-
-    redirect_to admin_session_path, notice: t('authentication.login_required')
+  def check_session_timeout
+    if session[:last_seen_at] && session[:last_seen_at] < 30.minutes.ago
+      reset_session
+      redirect_to admin_session_path, alert: t('authentication.session_expired')
+    else
+      session[:last_seen_at] = Time.current
+    end
   end
 
-  def admin_signed_in?
-    session[:admin_signed_in] == true
+  def require_admin
+    return if session[:admin_signed_in]
+
+    redirect_to admin_session_path, alert: t('authentication.login_required')
   end
 end

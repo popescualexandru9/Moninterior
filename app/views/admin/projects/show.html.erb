@@ -18,12 +18,14 @@
         </div>
       </div>
     </div>
+
     <div class="min-h-screen py-12" data-header="navbar_scroll_black">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="mb-8">
           <h3 class="text-lg font-semibold mb-2">Project Brief</h3>
           <p class="text-gray-700"><%= @project.brief %></p>
         </div>
+
         <div>
           <h2 class="text-lg font-bold text-gray-900 mb-6">Add Image</h2>
           <%= form_with(model: [:admin, @project, @project_image], local: true, class: "space-y-6") do |f| %>
@@ -39,6 +41,7 @@
                 </div>
               </div>
             <% end %>
+
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <%= f.label :name, class: "block text-sm font-medium text-gray-700 mb-1" do %>
@@ -54,16 +57,19 @@
                   Tag <span class="text-red-500">*</span>
                 <% end %>
                 <%= f.select :tag,
-                             ProjectImage.tags.keys.map { |tag| [tag.titleize, tag] },
-                             { include_blank: "Select a tag" },
-                             {
-                                                  required: true,
-                                                  class: "w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors duration-200",
-                                                } %>
+                            ProjectImage.tags.keys.map { |tag| [tag.titleize, tag] },
+                            { include_blank: "Select a tag" },
+                            {
+                              required: true,
+                              class: "w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors duration-200",
+                            } %>
               </div>
             </div>
+
             <div>
-              <%= f.label :image, class: "block text-sm font-medium text-gray-700 mb-1" %>
+              <%= f.label :image, class: "block text-sm font-medium text-gray-700 mb-1" do %>
+                Image <span class="text-red-500">*</span>
+              <% end %>
               <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-lg hover:border-indigo-500 transition-colors duration-200 cursor-pointer" onclick="document.getElementById('project_image_image').click();">
                 <div class="space-y-1 text-center">
                   <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48">
@@ -89,6 +95,7 @@
             </div>
           <% end %>
         </div>
+
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-10" x-data="projectImageModal">
           <% ProjectImage.tags.keys.each do |tag| %>
             <% images_in_tag = @project_images.where(tag: tag) %>
@@ -134,6 +141,7 @@
               </ul>
             </div>
           <% end %>
+
           <!-- Full Screen Modal -->
           <div x-show='showModal'
            x-cloak

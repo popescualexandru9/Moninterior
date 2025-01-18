@@ -3,7 +3,9 @@
 module Admin
   # Controller for managing project images
   class ProjectImagesController < ApplicationController
-    before_action :authenticate_admin!
+    before_action :require_admin
+    before_action :check_session_timeout
+
     before_action :set_project
     before_action :set_project_image, only: [:destroy]
 

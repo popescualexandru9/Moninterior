@@ -1,7 +1,16 @@
 <div class="main-carousel">
   <% @projects.each do |project| %>
     <div class="caption carousel-cell" data-header="navbar_scroll_white">
-      <div class="caption-background" style="background-image: url('<%= @project_landing_cover %>');"></div>
+      <div class="caption-background">
+        <% cover_image = project.project_images.find_by(tag: "cover") %>
+        <% if cover_image&.image&.attached? %>
+            <div class="caption-background" style="background-image: url('<%= url_for(cover_image.image) %>')"></div>
+        <% else %>
+          <div class="w-full bg-gray-200 flex items-center justify-center">
+            <span class="text-gray-400">No cover image</span>
+          </div>
+        <% end %>
+      </div>
       <div class="caption-container">
         <div class="caption-text">
           <p data-aos="fade-right" data-aos-delay="1200" data-aos-duration="1200" data-aos-offset="50" class="caption-title text-4xl"> <%= project.name %></p>

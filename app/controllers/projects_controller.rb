@@ -7,7 +7,6 @@ class ProjectsController < ApplicationController
   # GET /projects or /projects.json
   def index
     @projects = Project.all
-    @project_landing_cover = 'https://moninterior.s3.us-east-1.amazonaws.com/landing.jpeg'
     @images = Rails.root.glob('app/assets/images/blueprint_plan/*').map do |file|
       {
         name: File.basename(file, '.png'),

@@ -1,7 +1,7 @@
 .navbar {
   color: #fff;
   position: fixed;
-  z-index: 100;
+  z-index: 10;
   top: 0;
   left: 0;
   right: 0;
@@ -20,7 +20,7 @@
   display: flex;
   align-items: center;
   gap: 10px; /* Space between buttons */
-  z-index: 100;
+  z-index: 10;
   padding-right: 5%;
 }
 
@@ -46,7 +46,7 @@
 .overlay {
   position: fixed;
   top: 0;
-  z-index: 99;
+  z-index: 9;
   display: none;
   overflow: auto;
   width: 100%;
@@ -90,7 +90,7 @@
   font-size: 1em;
   background-color: white;
   position: relative;
-  z-index: 1000;
+  z-index: 10;
 }
 
 .menu-button.hamburger.btn-open span:nth-child(1) {

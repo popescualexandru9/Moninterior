@@ -109,6 +109,19 @@ const initButtonVisibility = () => {
   loadpageButton.click(() => scrollToElement("main"));
 };
 
+// Alert handlers
+const initAlertHandlers = () => {
+  const alert = document.querySelector('[role="alert"]');
+  if (alert) {
+    setTimeout(() => {
+      alert.style.opacity = "0";
+      setTimeout(() => {
+        alert.remove();
+      }, 300); // wait for fade out
+    }, 2000); // 2 seconds
+  }
+};
+
 // Initialize everything when document is ready
 $(document).ready(function () {
   AOS.init({});
@@ -116,6 +129,7 @@ $(document).ready(function () {
   initButtonVisibility();
   initScrollMagic();
   initBlueprintButtons();
+  initAlertHandlers();
 
   // Handle URL hash scrolling
   const hash = window.location.hash;

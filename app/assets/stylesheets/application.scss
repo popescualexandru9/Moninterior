@@ -26,6 +26,10 @@ body {
   margin: 0;
 }
 
+[role="alert"] {
+  transition: opacity 0.3s ease-in-out;
+}
+
 .main-content {
   flex: 1; /* Takes up the remaining space */
 }

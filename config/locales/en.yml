@@ -28,19 +28,26 @@
 #       enabled: "ON"
 
 en:
-  hello: "Hello world"
-  errors:
-    messages:
-      file_too_large: "is too large (must be less than 5MB)"
-  project_images:
-    create:
-      success: "Image was successfully added."
-    destroy:
-      deleted: "Image was successfully removed."
-  projects:
-    create:
-      success: "Project was successfully created."
-    update:
-      success: "Project was successfully updated."
-    destroy:
-      success: "Project was successfully deleted."
+  admin:
+    sessions:
+      create:
+        success: "Successfully signed in"
+        invalid: "Invalid password"
+      destroy:
+        success: "Successfully signed out"
+    projects:
+      create:
+        success: "Project was successfully created"
+      update:
+        success: "Project was successfully updated"
+      destroy:
+        success: "Project was successfully deleted"
+    project_images:
+      create:
+        success: "Image was successfully added"
+        already_uploaded: "This image was already uploaded"
+      destroy:
+        success: "Image was successfully deleted"
+
+  authentication:
+    login_required: "Please sign in to access this area"

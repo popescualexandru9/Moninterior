@@ -22,26 +22,26 @@
 
 @keyframes zoom-in {
   0% {
-    -webkit-transform:scale(1); /* Safari and Chrome */
-    -moz-transform:scale(1); /* Firefox */
-    -ms-transform:scale(1); /* IE 9 */
-    -o-transform:scale(1); /* Opera */
-    transform:scale(1);
+    -webkit-transform: scale(1); /* Safari and Chrome */
+    -moz-transform: scale(1); /* Firefox */
+    -ms-transform: scale(1); /* IE 9 */
+    -o-transform: scale(1); /* Opera */
+    transform: scale(1);
   }
   100% {
-    -webkit-transform:scale(1.05); /* Safari and Chrome */
-    -moz-transform:scale(1.05); /* Firefox */
-    -ms-transform:scale(1.05); /* IE 9 */
-    -o-transform:scale(1.05); /* Opera */
-    transform:scale(1.05);
+    -webkit-transform: scale(1.05); /* Safari and Chrome */
+    -moz-transform: scale(1.05); /* Firefox */
+    -ms-transform: scale(1.05); /* IE 9 */
+    -o-transform: scale(1.05); /* Opera */
+    transform: scale(1.05);
   }
 }
 
 .caption-container {
   position: absolute;
-  bottom: 4.5%;
-  left: 5%;
-  padding: 1rem;
+  bottom: 0;
+  left: 0;
+  padding: 4.5vh 5% 3rem 5%;
   width: 100%;
   min-height: 25vh;
   display: flex;
@@ -49,6 +49,7 @@
   align-items: flex-start;
   justify-content: flex-start;
   z-index: 1;
+  background: linear-gradient(180deg, transparent 0, rgba(0, 0, 0, 0.65));
 }
 
 .caption-text {
@@ -74,8 +75,7 @@
 
 @media (max-width: 1200px) {
   .caption-container {
-    bottom: 2.5%;
-    left: 3%;
+    padding: 2.5vh 3% 3rem 4%;
   }
 
   .caption-title {
@@ -85,8 +85,7 @@
 
 @media (max-width: 992px) {
   .caption-container {
-    bottom: 1.75%;
-    left: 2.5%;
+    padding: 1.75vh 2.5% 2.5rem 4.5%;
   }
 
   .caption-title {
@@ -96,8 +95,7 @@
 
 @media (max-width: 768px) {
   .caption-container {
-    bottom: 3%;
-    left: 2%;
+    padding: 3vh 2% 6rem 4%;
   }
 
   .caption-title {
@@ -114,7 +112,7 @@
 
 @media (max-width: 576px) {
   .caption-container {
-    bottom: 1%;
+    padding: 1vh 2% 4rem 4%;
   }
 
   .caption-title {

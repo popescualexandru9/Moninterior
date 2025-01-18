@@ -42,6 +42,8 @@ en:
         success: "Project was successfully updated"
       destroy:
         success: "Project was successfully deleted"
+      handle_not_found:
+        not_found: "Project not found"
     project_images:
       create:
         success: "Image was successfully added"

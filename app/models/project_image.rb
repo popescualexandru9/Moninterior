@@ -2,8 +2,12 @@
 
 # ProjectImage model representing images associated with a project
 class ProjectImage < ApplicationRecord
+  acts_as_list scope: :project
+
   belongs_to :project
   has_one_attached :image
+
+  default_scope { order(position: :asc) }
 
   enum :tag, {
     cover: 'cover',

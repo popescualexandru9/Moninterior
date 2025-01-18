@@ -1,46 +1,15 @@
-import ScrollMagic from "scrollmagic";
 import AOS from "aos";
 import Flickity from "flickity";
 import Alpine from "alpinejs";
+import { ANIMATION_TIMING, COLORS, scrollToElement } from "./helpers";
+import { initSortableProjects } from "./sortable_init";
+import { initScrollMagic } from "./scrollmagic_init";
 
 window.Alpine = Alpine;
 window.Flickity = Flickity;
 
 import "./flickity_init";
 import "./alpine_init";
-
-// Configuration constants
-const ANIMATION_TIMING = {
-  SCROLL: 1200,
-  MENU_TOGGLE: 450,
-  MENU_FADE: 650,
-  BUTTON_COLOR: 200,
-};
-
-const COLORS = {
-  WHITE: "white",
-  BLACK: "black",
-};
-
-// Utility functions
-const scrollToElement = (element, duration = ANIMATION_TIMING.SCROLL) => {
-  if (!element) return;
-
-  $("html, body").animate(
-    {
-      scrollTop: $(element).offset().top,
-    },
-    duration
-  );
-};
-
-const updateNavbarColors = (color) => {
-  requestAnimationFrame(() => {
-    $(".menu-container span").css("background-color", color);
-    $(".menu-container .rectangle").css("border-color", color);
-    $("#logo").css("color", color);
-  });
-};
 
 // Menu handlers
 const initMenuHandlers = () => {
@@ -74,29 +43,6 @@ const initBlueprintButtons = () => {
         button.style.color = COLORS.WHITE;
       }, ANIMATION_TIMING.BUTTON_COLOR);
     });
-  });
-};
-
-// ScrollMagic initialization
-const initScrollMagic = () => {
-  const controller = new ScrollMagic.Controller();
-
-  $("div[data-header]").each(function () {
-    const section = $(this);
-
-    new ScrollMagic.Scene({
-      triggerElement: this,
-      triggerHook: 0,
-      offset: -$(".navbar").outerHeight(),
-      duration: section.height(),
-    })
-      .on("enter", function () {
-        const headerColor = section.attr("data-header");
-        const color =
-          headerColor === "navbar_scroll_white" ? COLORS.WHITE : COLORS.BLACK;
-        updateNavbarColors(color);
-      })
-      .addTo(controller);
   });
 };
 
@@ -155,6 +101,7 @@ $(document).ready(function () {
   initButtonVisibility();
   initScrollMagic();
   initAlertHandlers();
+  initSortableProjects();
 
   // Handle URL hash scrolling
   const hash = window.location.hash;

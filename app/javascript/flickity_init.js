@@ -3,9 +3,11 @@ const clearProjectContents = () => {
   projectContents.classList.add("fade-out");
 
   setTimeout(() => {
+    // Prevents the navbar from changing color when the project is chaged
+    $("#about").attr("data-header", "navbar_scroll_white");
     projectContents.innerHTML = "";
     projectContents.classList.remove("fade-out");
-  }, 500);
+  }, 200);
 };
 
 // Function to initialize Flickity
@@ -26,7 +28,6 @@ function initializeFlickity() {
       initialIndex: localStorage.getItem("currentSlide") || 0,
     });
 
-    // Save current slide index to localStorage on change event
     flkty.on("change", function (index) {
       $("html, body").animate({ scrollTop: 0 }, "medium");
       clearProjectContents();

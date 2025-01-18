@@ -47,6 +47,14 @@ module Admin
       redirect_to admin_projects_path, notice: t('.success')
     end
 
+    def update_positions
+      valid_project_ids = params[:project_ids].compact_blank
+      valid_project_ids.each_with_index do |id, index|
+        Project.find(id).update!(position: index + 1)
+      end
+      head :ok, notice: t('.updated_positions')
+    end
+
     private
 
     def set_project

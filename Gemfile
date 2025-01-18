@@ -86,6 +86,7 @@ gem 'rubocop', '~> 1.69', groups: %i[development test]
 
 gem 'erb_lint', '~> 0.8.0', groups: %i[development test]
 
+gem 'acts_as_list'
 gem 'rubocop-capybara', '~> 2.21'
 gem 'rubocop-rails', '~> 2.28'
 gem 'ruby-vips'

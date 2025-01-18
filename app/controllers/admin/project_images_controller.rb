@@ -32,6 +32,14 @@ module Admin
       redirect_to admin_project_path(@project), notice: t('.success')
     end
 
+    def update_positions
+      valid_project_image_ids = params[:project_image_ids].compact_blank
+      valid_project_image_ids.each_with_index do |id, index|
+        ProjectImage.find(id).update!(position: index + 1)
+      end
+      head :ok
+    end
+
     private
 
     def set_project

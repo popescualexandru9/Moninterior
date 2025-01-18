@@ -1,48 +1,45 @@
 <div class="container mx-auto px-4 py-32" data-header="navbar_scroll_black">
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+  <ul id="sortable_projects" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
     <% @projects.each do |project| %>
-      <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+      <li class="bg-white rounded-lg shadow-lg overflow-hidden ui-state-default" data-id="<%= project.id %>">
         <% cover_image = project.project_images.find_by(tag: 'cover') %>
-        <% if cover_image&.image&.attached? %>
-          <%= image_tag cover_image.image, class: "w-full h-48 object-cover" %>
-        <% else %>
-          <div class="w-full h-48 bg-gray-200 flex items-center justify-center">
-            <span class="text-gray-400">No cover image</span>
-          </div>
-        <% end %>
-
-        <div class="p-4">
-          <h2 class="text-xl font-semibold mb-2"><%= project.name %></h2>
-          <div class="flex justify-between items-center mt-4">
-            <%= link_to admin_project_path(project), class: 'text-gray-600 hover:text-indigo-800 flex items-center' do %>
-              <i class="fas fa-edit mr-2"></i> View & Edit
-            <% end %>
-            <%= button_to admin_project_path(project),
+          <% if cover_image&.image&.attached? %>
+            <%= image_tag cover_image.image, class: "w-full h-48 object-cover" %>
+          <% else %>
+            <div class="w-full h-48 bg-gray-200 flex items-center justify-center">
+              <span class="text-gray-400">No cover image</span>
+            </div>
+          <% end %>
+          <div class="p-4">
+            <h2 class="text-xl font-semibold mb-2"><%= project.name %></h2>
+            <div class="flex justify-between items-center mt-4">
+              <%= link_to admin_project_path(project), class: 'text-gray-600 hover:text-indigo-800 flex items-center' do %>
+                <i class="fas fa-edit mr-2"></i> View & Edit
+              <% end %>
+              <%= button_to admin_project_path(project),
                 method: :delete,
                 class: 'hover:text-rose-800 flex items-center',
                 data: { confirm: 'Are you sure?' } do %>
-              <i class="fas fa-trash-alt mr-2 text-rose-800 "></i>
-            <% end %>
+                <i class="fas fa-trash-alt mr-2 text-rose-800 "></i>
+              <% end %>
+            </div>
           </div>
-        </div>
-      </div>
-    <% end %>
-  </div>
-
+        </li>
+      <% end %>
+  </ul>
   <div class="mt-8 text-center">
     <div class="flex justify-center items-center mb-4 mt-8">
       <%= link_to new_admin_project_path, class: 'px-6 py-2.5 bg-gray-600 text-white text-base rounded-lg font-medium shadow-md hover:bg-indigo-700 transform hover:-translate-y-0.5 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500' do %>
         <i class="fas fa-plus mr-2"></i> New Project
       <% end %>
     </div>
-
     <%= link_to "Back Home", root_path, class: "text-gray-600 hover:text-indigo-800" %>
     |
     <%= button_to admin_destroy_session_path,
         method: :delete,
         class: "text-gray-600 hover:text-rose-950",
         form_class: "inline-block" do %>
-        Sign Out <i class="fas fa-sign-out-alt mr-2"></i>
+      Sign Out <i class="fas fa-sign-out-alt mr-2"></i>
     <% end %>
   </div>
 </div>

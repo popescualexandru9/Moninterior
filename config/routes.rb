@@ -9,7 +9,10 @@ Rails.application.routes.draw do
     delete 'session', to: 'sessions#destroy', as: :destroy_session
 
     resources :projects do
-      resources :project_images, only: %i[create destroy]
+      resources :project_images, only: %i[create destroy] do
+        patch :update_positions, on: :collection
+      end
+      patch :update_positions, on: :collection
     end
   end
 

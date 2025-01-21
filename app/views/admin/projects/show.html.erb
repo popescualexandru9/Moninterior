@@ -57,7 +57,7 @@
                   Tag <span class="text-red-500">*</span>
                 <% end %>
                 <%= f.select :tag,
-                            ProjectImage.tags.keys.map { |tag| [tag.titleize, tag] },
+                            TagType.all.map { |tag| [tag.titleize, tag] },
                             { include_blank: "Select a tag" },
                             {
                               required: true,
@@ -97,7 +97,7 @@
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-10" x-data="projectImageModal">
-          <% ProjectImage.tags.keys.each do |tag| %>
+          <% TagType.all.each do |tag| %>
             <% images_in_tag = @project_images.where(tag: tag) %>
             <div class="col-span-full" x-data="{ open: true }">
               <div class="flex items-center justify-between bg-gray-100 p-4 rounded-lg mb-4 <%= images_in_tag.any? ? "cursor-pointer" : "" %>"

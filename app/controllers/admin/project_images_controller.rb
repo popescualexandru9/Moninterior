@@ -3,21 +3,13 @@
 module Admin
   # Controller for managing project images
   class ProjectImagesController < ApplicationController
-    before_action :require_admin
+    before_action :require_login
     before_action :check_session_timeout
-
     before_action :set_project
     before_action :set_project_image, only: [:destroy]
 
     def create
-      # Check if an identical image was uploaded in the last minute
-      if @project.project_images
-                 .where(name: project_image_params[:name])
-                 .exists?(['created_at > ?', 1.minute.ago])
-
-        return redirect_to admin_project_path(@project),
-                           alert: t('.already_uploaded')
-      end
+      return redirect_to admin_project_path(@project), alert: t('.already_uploaded') if recent_duplicate_image?
 
       @project_image = @project.project_images.build(project_image_params)
 
@@ -35,21 +27,27 @@ module Admin
     end
 
     def update_positions
-      valid_project_image_ids = params[:project_image_ids].compact_blank
-      valid_project_image_ids.each_with_index do |id, index|
-        ProjectImage.find(id).update!(position: index + 1)
-      end
-      head :ok
+      PositionManager.new(ProjectImage, params[:project_image_ids]).update_positions
+      head :ok, notice: t('.updated_positions')
     end
 
     private
+
+    # Check if an identical image was uploaded in the last minute
+    def recent_duplicate_image?
+      return True if @project.project_images
+                             .where(name: project_image_params[:name])
+                             .exists?(['created_at > ?', 1.minute.ago])
+
+      False
+    end
 
     def set_project
       @project = Project.find(params[:project_id])
     end
 
     def set_project_image
-      @project_image = @project.project_images.find(params[:id])
+      @project_image = ProjectImage.find(params[:id])
     end
 
     def project_image_params

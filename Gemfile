@@ -90,3 +90,5 @@ gem 'acts_as_list'
 gem 'rubocop-capybara', '~> 2.21'
 gem 'rubocop-rails', '~> 2.28'
 gem 'ruby-vips'
+
+gem 'rspec-core', '~> 3.13'

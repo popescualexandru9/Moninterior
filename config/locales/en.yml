@@ -44,13 +44,16 @@ en:
         success: "Project was successfully deleted"
       handle_not_found:
         not_found: "Project not found"
+      update_positions:
+        success: "Positions were successfully updated"
     project_images:
       create:
         success: "Image was successfully added"
         already_uploaded: "This image was already uploaded"
       destroy:
         success: "Image was successfully deleted"
-
+      update_positions:
+        success: "Positions were successfully updated"
   authentication:
     login_required: "Please sign in to access this area."
     session_expired: "Session has expired. Please log in again."

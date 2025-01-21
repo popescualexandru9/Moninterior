@@ -86,5 +86,5 @@
   </div>
 
 <script type="text/javascript" id="gallery-images">
-  <%= raw @project.project_images.blueprint.map { |image| { name: image.name, src: rails_blob_path(image.image, only_path: true) } }.to_json %>
+  <%= raw project[:blueprint_images].to_json %>
 </script>

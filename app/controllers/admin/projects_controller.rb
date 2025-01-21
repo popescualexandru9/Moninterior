@@ -3,10 +3,9 @@
 module Admin
   # Controller for managing projects
   class ProjectsController < ApplicationController
-    before_action :require_admin
+    before_action :require_login
     before_action :check_session_timeout
-
-    before_action :set_project, only: %i[show edit update destroy]
+    before_action :set_project, only: %i[show update destroy]
     rescue_from ActiveRecord::RecordNotFound, with: :handle_not_found
 
     def index
@@ -20,10 +19,6 @@ module Admin
 
     def new
       @project = Project.new
-    end
-
-    def edit
-      nil
     end
 
     def create
@@ -50,10 +45,7 @@ module Admin
     end
 
     def update_positions
-      valid_project_ids = params[:project_ids].compact_blank
-      valid_project_ids.each_with_index do |id, index|
-        Project.find(id).update!(position: index + 1)
-      end
+      PositionManager.new(Project, params[:project_ids]).update_positions
       head :ok, notice: t('.updated_positions')
     end
 
